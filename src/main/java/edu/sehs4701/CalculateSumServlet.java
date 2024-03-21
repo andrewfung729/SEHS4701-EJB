@@ -31,15 +31,15 @@ public class CalculateSumServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter pw = response.getWriter();
-        pw.println("We only support two integer parameters num1 and num2!");
+        pw.println("We only support two numeric parameters num1 and num2!");
         String num1 = request.getParameter("num1");
         String num2 = request.getParameter("num2");
         pw.println("Your input was: num1 = " + num1 + " and num2 = " + num2);
 
-        if (calculateSumEJB.isInteger(num1) && calculateSumEJB.isInteger(num2)) {
-            pw.println(calculateSumEJB.SumByEJB(Integer.parseInt(num1), Integer.parseInt(num2)));
+        if (calculateSumEJB.isNumeric(num1) && calculateSumEJB.isNumeric(num2)) {
+            pw.println(calculateSumEJB.SumByEJB(Float.parseFloat(num1), Float.parseFloat(num2)));
         } else {
-            pw.println("Error: Both inputs must be integers.");
+            pw.println("Error: Both inputs must be numeric.");
         }
     }
 }
